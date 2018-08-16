@@ -1,5 +1,6 @@
-<<<<<<< HEAD
 # Rock-Paper-Scissors
+
+Coming soon - more than a chat site!
 
 ## Getting Started
 
@@ -25,6 +26,3 @@ No installation needed! Just open the page in your preferred browser.
 ## Authors
 
 * **Andrew Meyer** - *Initial work* - [Andypants152](https://github.com/Andypants152)
-=======
-# Rock-Paper-Scissors Online!
->>>>>>> 9371ac3e213270d63f0dcb5c3dd56a0c03aa1d2c
