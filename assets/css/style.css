@@ -1,0 +1,17 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: default;
+}
+
+main{
+    margin: auto;
+    width: 85%;
+}
+
+#chat-display{
+    max-height: 300px;
+    overflow-y: auto;
+}

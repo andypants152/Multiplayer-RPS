@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock Paper Scissors!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+    <!--Custome CSS-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+</head>
+<body>
+
+    <header class="container-fluid">
+    <div class="jumbotron jumbotron-fluid text-center p-4">
+        <div class="container">
+            <h1 class="display-4">Rock Paper Scissors!</h1>
+        </div>
+    </div>
+    </header>
+
+    <main>
+        <div id="login-display" class="show">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Enter a username</label>
+                            <input type="text" class="form-control" id="username">
+                            <button type="submit" class="btn btn-primary mt-3" id="signin">Sign in</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+        <div id="game" class="hide">
+            <div class="row">
+                <div class="col-md-8" id="display">
+                    <h3>Waiting for other players...</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-default">
+                        <div class="card-heading text-white bg-info pl-3">
+                            <h3 class="card-title">Your score</h3>
+                        </div>
+                        <div class="card-body">
+                            <h5><strong>Wins </strong> <span id="wins">0</span></h5>
+                            <h5><strong>Losses </strong> <span id="losses">0</span></h5>
+                            <h5><strong>Ties </strong> <span id="ties">0</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body" id="chat-display"></div>
+                        <form class="form mx-3 mt-3">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="chat-input">
+                                <div class="input-group-append">
+                                    <button class="btn px-3 btn-outline-secondary" type="submit" id="chat-submit">Chat</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mt-2">
+                        <div class="card-heading text-white bg-info pl-3">
+                            <h3 class="card-title">Queue</h3>
+                        </div>
+                        <div class="card-body" id="queue">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="assets/javascript/logic.js"></script>
+    
+</body>
+</html>
