@@ -1,6 +1,6 @@
 # Rock-Paper-Scissors
 
-Coming soon - more than a chat site!
+Play Rock Paper Scissors vs a friend over the internet!
 
 ## Getting Started
 

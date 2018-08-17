@@ -64,6 +64,11 @@ $(function() {
                 checkIfPlaying();
 
             }
+            else{
+                $("#display").empty();
+                $("#display").append($("<h3>").text("Waiting for an opponent"));           
+            }
+
         }
     })
 
