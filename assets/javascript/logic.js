@@ -15,6 +15,9 @@ var messagesRef = database.ref("/RPS/messages");
 var connectionsRef = database.ref("/RPS/connections");
 var username, uid, opponentSpot, currentPlayers;
 var playerSpot = -1;
+var wins = 0;
+var losses = 0;
+var ties = 0;
 
 $(function() {
 
@@ -74,21 +77,45 @@ $(function() {
 
     rpsRef.on("value", function (snap) {
         if (playerSpot === 0 || playerSpot === 1) {
-            var opponentChoice = snap.val()[opponentSpot].choice;
-            var playerChoice = snap.val()[playerSpot].choice;
+            if(snap.val()[opponentSpot]){
+                var opponentChoice = snap.val()[opponentSpot].choice;
+                var playerChoice = snap.val()[playerSpot].choice;
+            }
+
             if (opponentChoice != "none" && playerChoice != "none") {
                 if ((playerChoice === "rock" && opponentChoice === "scissors") ||
                 (playerChoice === "paper" && opponentChoice === "rock") ||
                 (playerChoice === "scissors" && opponentChoice === "paper")){
-                    console.log("You Win!")
+                    wins++;
+                    $("#wins").text(wins);
+                    $("#display").empty();
+                    $("#display").append($("<h3>").text("You Win!"));
+                    database.ref("/RPS/game/" + playerSpot).set({
+                        choice: "none",
+                    });
+                    setTimeout(showRPS, 3000);
                 }
                 else if ((opponentChoice === "rock" && playerChoice === "scissors") ||
                         (opponentChoice === "paper" && playerChoice === "rock") ||
                         (opponentChoice === "scissors" && playerChoice === "paper")){
-                    console.log("You Lose!");
+                    losses++;
+                    $("#losses").text(losses);
+                    $("#display").empty();
+                    $("#display").append($("<h3>").text("You Lose!"));
+                    database.ref("/RPS/game/" + playerSpot).set({
+                        choice: "none",
+                    });
+                    setTimeout(showRPS, 3000);
                 }
                 else{
-                    console.log("You Tied!");
+                    ties++;
+                    $("#ties").text(ties);
+                    $("#display").empty();
+                    $("#display").append($("<h3>").text("You Tied!"));
+                    database.ref("/RPS/game/" + playerSpot).set({
+                        choice: "none",
+                    });
+                    setTimeout(showRPS, 3000);
                 }
             }
         }
@@ -124,11 +151,12 @@ $(function() {
     }
 
     $("#display").on("click", "img", function(e){
+        $("#display").empty();
+        $("#display").append($("<h3>").text("Waiting on opponent..."));
+
         database.ref("/RPS/game/" + playerSpot).set({
             choice: $(this).attr("alt")
         })
-        $("#display").empty();
-        $("#display").append($("<h3>").text("Waiting on opponent..."));
 
     })
 
